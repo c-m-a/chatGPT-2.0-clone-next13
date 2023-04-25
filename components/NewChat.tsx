@@ -13,7 +13,6 @@ export default function NewChat() {
   const createNewChat = async () => {
     const doc = await addDoc(
       collection(db, 'users', session?.user?.email!, 'chats'), {
-        message: [],
         userId: session?.user?.email!,
         createdAt: serverTimestamp()
     })
