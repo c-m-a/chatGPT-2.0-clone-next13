@@ -1,6 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
-import openai from '../../../lib/chatgpt'
+import openai from '../../lib/chatgpt'
 
 type Option = {
   value: string
@@ -11,7 +11,7 @@ type Data = {
   modelOptions: Option[]
 }
 
-export default function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
   const models = await openai.listModels().then(res => res.data.data)
 
   const modelOptions = models.map(model => ({
@@ -21,3 +21,4 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Data>)
 
   res.status(200).json({ modelOptions, })
 }
+
