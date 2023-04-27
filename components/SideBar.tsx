@@ -20,9 +20,14 @@ export default function SideBar() {
     <div className="flex-1">
       <div>
         <NewChat />
-        <div className="hidden sm:inline">
+        <div className="hidden md:inline">
           <ModelSelection />
         </div>
+        { loading && (
+          <div className="animate-pulse text-center text-white">
+            <p>Loading Chats...</p>
+          </div>
+        )}
         {chats?.docs.map(chat => (
           <ChatRow key={chat.id} id={chat.id} />
         ))}
