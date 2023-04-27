@@ -21,7 +21,7 @@ export default function NewChat() {
   }
 
   return <div
-            className="border-gray-700 border chatRow"
+            className="border-gray-700 border chatRow mb-2"
             onClick={createNewChat}
           >
     <PlusIcon className="h-4 w-4" />
